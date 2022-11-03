@@ -29,7 +29,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'rack-cors'
 
 gem 'faraday'
-gem 'figaro'
 gem 'jsonapi-serializer'
 
 group :development, :test do
@@ -37,6 +36,7 @@ group :development, :test do
   # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
   gem 'faker'
+  gem 'figaro'
   gem 'factory_bot_rails'
   gem 'launchy'
   gem 'orderly'
@@ -45,6 +45,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
+  gem 'pry'
 end
 
 group :development do
