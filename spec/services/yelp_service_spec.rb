@@ -9,7 +9,7 @@ RSpec.describe YelpService do
     expect(search).to be_a Hash
     expect(search[:businesses]).to be_an Array
     expect(search[:businesses].count).to eq(20)
-    
+
     restaurant_data = search[:businesses].first
 
     expect(restaurant_data).to have_key :name
