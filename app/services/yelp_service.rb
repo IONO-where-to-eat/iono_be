@@ -2,7 +2,8 @@ require 'faraday'
 require 'json'
 
 class YelpService
-  def self.get_restaurants(latitude, longitude)
+  def self.get_restaurants(latitude, longitude, radius:, open_now:, transactions:, price:)
+    require 'pry'; binding.pry
     response = self.conn.get("/v3/businesses/search?latitude=#{latitude}&longitude=#{longitude}")
     parse(response)
   end
