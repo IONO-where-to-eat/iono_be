@@ -3,10 +3,12 @@ require 'json'
 
 class YelpService
   def self.get_restaurants(latitude, longitude, filter_params = nil)
-    # binding.pry
-    filter_params = filter_params.select {|key,value| !value.nil? }
-    response = self.conn.get("/v3/businesses/search?latitude=#{latitude}&longitude=#{longitude}", params = filter_params)
-    # binding.pry
+    if filter_params.nil?
+      response = self.conn.get("/v3/businesses/search?latitude=#{latitude}&longitude=#{longitude}")
+    else
+      filter_params = filter_params.select {|key,value| !value.nil? }
+      response = self.conn.get("/v3/businesses/search?latitude=#{latitude}&longitude=#{longitude}", params = filter_params)
+    end
     parse(response)
   end
 
@@ -15,6 +17,7 @@ class YelpService
   def self.conn
     Faraday.new('https://api.yelp.com') do |faraday|
       faraday.params['categories'] = 'restaurants'
+      faraday.params['limit'] = '50'
       faraday.headers['Authorization'] = ENV['yelp_api_key']
     end
   end
