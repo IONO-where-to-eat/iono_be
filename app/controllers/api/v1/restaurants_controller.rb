@@ -5,7 +5,6 @@ class Api::V1::RestaurantsController < ApplicationController
     end
 
     filter_params = {radius: (params[:radius]), open_now: params[:open_now], price: params[:price]}
-    # binding.pry
     latitude, longitude = LocationFacade.location
     render json: YelpService.get_restaurants(latitude, longitude, filter_params)
   end
