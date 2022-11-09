@@ -17,7 +17,7 @@ class YelpService
   def self.conn
     Faraday.new('https://api.yelp.com') do |faraday|
       faraday.params['categories'] = 'restaurants'
-      faraday.params['limit'] = '50'
+      faraday.params['limit'] = '40'
       faraday.headers['Authorization'] = ENV['yelp_api_key']
     end
   end
