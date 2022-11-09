@@ -97,4 +97,7 @@ POST '/api/v1/users'
     }
 }
 ```
+<a href='app/documentation/IONO - API.postman_collection.JSON'>Postman collection JSON file</a>
 
+
+<!-- [Postman collection JSON file]('https://github.com/IONO-where-to-eat/iono_be/tree/main/app/documentation/IONO - API.postman_collection.JSON') -->
