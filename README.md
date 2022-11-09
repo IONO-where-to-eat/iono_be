@@ -1,28 +1,25 @@
-# IONO API 
+# IONO (Backend) API 
 
-This API provides restaurant information based on a user's location (IP Address).
+This API provides restaurant information based on a user's location (IP Address). It also can create users (or find existing users) to store in the database.
 
 ## Install
 
 `bundle install`<br>
 `rails db:{create, migrate}`
 
-## Database
+## Database / Schema
 
-<img src="/documentation/images/schema.png">
+<img src="app/documentation/images/schema.png" width="300">
 
-## REST API
-
-The REST API to the IONO app is described below.
-
-### Get Restaurants
-Returns 40 restaurants.
-#### Request 
+# REST API
+## Get Restaurants
+Returns 40 restaurants close to the location of the device IP address.
+### Request 
 
 GET '/api/v1/restaurants'
 
     curl -i -H 'Accept: application/json' http://localhost:5000/api/v1/restaurants
-#### Response Body
+### Response Body
 
 ```
 {
@@ -75,4 +72,28 @@ GET '/api/v1/restaurants'
             "display_phone": "(303) 297-0700",
             "distance": 1839.4484424332475
         } ]
+}
+```
+
+## Create a New User
+Creates a new user or finds an existing user by email. If the user already exists, it updates the "token" attribute of the user in the database.
+### Request 
+
+POST '/api/v1/users'
+
+    curl -d '{"email":"rebecka@gmail.com", "token":"kshaskdjh", "google_id":"123"}' -H "Content-Type: application/json" -X POST http://localhost:5000/api/v1/users
+
+### Response Body
+
+```
+{"data":
+    {"id":"6",
+    "type":"user",
+    "attributes":{
+        "id":6,
+        "email":"rebecka@gmail.com",
+        "token":"kshaskdjh",
+        "google_id":"123"}
+    }
+}
 ```
