@@ -1,6 +1,3 @@
-require 'faraday'
-require 'json'
-
 class LocationService
   def self.get_location
     response = self.conn.get('/v1/geocode/ip')
@@ -8,6 +5,7 @@ class LocationService
   end
 
   private
+  
   def self.conn
     Faraday.new(url: 'https://api.radar.io') do |faraday|
       faraday.headers['Authorization'] = ENV['location_api_key']
