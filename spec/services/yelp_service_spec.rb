@@ -7,7 +7,7 @@ RSpec.describe YelpService do
 
     expect(search).to be_a Hash
     expect(search[:businesses]).to be_an Array
-    expect(search[:businesses].count).to eq(50)
+    expect(search[:businesses].count).to eq(40)
 
     restaurant_data = search[:businesses].first
 
@@ -17,7 +17,7 @@ RSpec.describe YelpService do
 
   it 'returns restaurants with filter params' do
     latitude, longitude = LocationFacade.location
-    filter_params = {:radius=>8045, :open_now=>"true", :price=>"3"}
+    filter_params = { radius: 8045, open_now: 'true', price: '3' }
     search = YelpService.get_restaurants(latitude, longitude, filter_params)
 
     expect(search).to be_a Hash
